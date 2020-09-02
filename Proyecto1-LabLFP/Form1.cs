@@ -21,5 +21,10 @@ namespace Proyecto1_LabLFP
         {
 
         }
+
+        private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Area1.Enabled = true;
+        }
     }
 }
