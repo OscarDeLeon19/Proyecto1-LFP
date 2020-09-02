@@ -29,9 +29,48 @@ namespace Proyecto1_LabLFP
 
         private void cerrarToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show("Cerrando Archivo");
-            Area1.Text = null;
-            Area1.Enabled = false;
+            if (Area1.Enabled == true)
+            {
+                DialogResult condicion = MessageBox.Show("¿Deseas Guardar el Archivo?", "Aviso", MessageBoxButtons.YesNo);
+                if(condicion == System.Windows.Forms.DialogResult.Yes)
+                {
+                    if (SaveFile.ShowDialog() == DialogResult.OK)
+                    {
+
+                        Area1.SaveFile(SaveFile.FileName, RichTextBoxStreamType.PlainText);
+                        MessageBox.Show("Archivo Guardado");
+                    }
+                }
+                Area1.Text = null;
+                Area1.Enabled = false;
+            } 
+        }
+
+        private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Area1.Enabled = true;
+            if (OpenFile.ShowDialog() == DialogResult.OK)
+            {
+                Area1.LoadFile(OpenFile.FileName, RichTextBoxStreamType.PlainText);
+                MessageBox.Show("Archivo Cargado");
+            }
+        }
+
+        private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Area1.Enabled == true)
+            {
+                if (SaveFile.ShowDialog() == DialogResult.OK)
+                {
+                    
+                    Area1.SaveFile(SaveFile.FileName, RichTextBoxStreamType.PlainText);
+                    MessageBox.Show("Archivo Guardado");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No haz abierto o creado un archivo para guardar");
+            }
         }
     }
 }

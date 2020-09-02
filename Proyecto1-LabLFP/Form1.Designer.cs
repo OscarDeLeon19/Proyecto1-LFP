@@ -35,6 +35,8 @@
             this.Area1 = new System.Windows.Forms.RichTextBox();
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenFile = new System.Windows.Forms.OpenFileDialog();
+            this.SaveFile = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,6 +75,7 @@
             this.abrirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
             this.abrirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.abrirToolStripMenuItem.Text = "Abrir";
+            this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
             // 
             // Area1
             // 
@@ -89,6 +92,7 @@
             this.guardarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
             this.guardarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // cerrarToolStripMenuItem
             // 
@@ -96,6 +100,14 @@
             this.cerrarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cerrarToolStripMenuItem.Text = "Cerrar";
             this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click_1);
+            // 
+            // OpenFile
+            // 
+            this.OpenFile.Filter = "Archivo de Texto (*.txt)|* .txt";
+            // 
+            // SaveFile
+            // 
+            this.SaveFile.Filter = "Archivo de Texto (*.txt)|*.txt";
             // 
             // Form1
             // 
@@ -124,6 +136,8 @@
         private System.Windows.Forms.RichTextBox Area1;
         private System.Windows.Forms.ToolStripMenuItem guardarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog OpenFile;
+        private System.Windows.Forms.SaveFileDialog SaveFile;
     }
 }
 
