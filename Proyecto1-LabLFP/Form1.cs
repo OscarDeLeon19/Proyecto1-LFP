@@ -17,14 +17,21 @@ namespace Proyecto1_LabLFP
             InitializeComponent();
         }
 
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-
-        }
+        
 
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Archivo nuevo");
             Area1.Enabled = true;
+        }
+
+        
+
+        private void cerrarToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Cerrando Archivo");
+            Area1.Text = null;
+            Area1.Enabled = false;
         }
     }
 }
