@@ -72,5 +72,31 @@ namespace Proyecto1_LabLFP
                 MessageBox.Show("No haz abierto o creado un archivo para guardar");
             }
         }
+
+        private void Area1_TextChanged(object sender, EventArgs e)
+        {
+            int Caracteres = Area1.GetFirstCharIndexOfCurrentLine();
+            int linea = Area1.GetLineFromCharIndex(Caracteres);
+            etiqueta1.Text = "Numero de linea: " + linea;
+            try
+            {
+                string l = Area1.Lines[linea];
+                MessageBox.Show(l);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Hola");
+            }
+            
+        }
+
+        private void EventoClick(object sender, MouseEventArgs e)
+        {
+            int Caracteres = Area1.GetFirstCharIndexOfCurrentLine();
+            int linea = Area1.GetLineFromCharIndex(Caracteres);
+            etiqueta1.Text = "Numero de linea: " + linea;
+        }
+
+       
     }
 }
