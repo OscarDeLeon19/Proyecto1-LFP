@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Proyecto1_LabLFP
 {
-    public partial class Form1 : Form
+    public partial class VentanaIDE : Form
     {
         string[] Reservadas = new string[] { "else", "if" };
-        public Form1()
+        public VentanaIDE()
         {
             InitializeComponent();
         }
@@ -98,7 +98,7 @@ namespace Proyecto1_LabLFP
 
         private void PresionarEnter(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Enter)
+            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Up || e.KeyData == Keys.Down)
             {
                 int position = Area1.SelectionStart;
                 int linea = Area1.GetLineFromCharIndex(position);
@@ -117,6 +117,19 @@ namespace Proyecto1_LabLFP
                         pos = pos + (i - 1);
                         Area1.Select(pos, 1);
                         Area1.SelectionColor = Color.Red;
+                        Area1.SelectionStart = position;
+                    }
+                    else
+                    {
+                        int pos = 0;
+                        for (int j = 0; j < linea; j++)
+                        {
+                            pos = pos + Area1.Lines[j].Length;
+                        }
+                        pos = pos + (linea + 1);
+                        pos = pos + (i - 1);
+                        Area1.Select(pos, 1);
+                        Area1.SelectionColor = Color.Blue;
                         Area1.SelectionStart = position;
                     }
                 }

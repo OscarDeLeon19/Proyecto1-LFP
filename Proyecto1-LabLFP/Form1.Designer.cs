@@ -1,6 +1,6 @@
 ﻿namespace Proyecto1_LabLFP
 {
-    partial class Form1
+    partial class VentanaIDE
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -122,7 +122,7 @@
             this.etiqueta1.TabIndex = 5;
             this.etiqueta1.Text = "Numero de Linea: ";
             // 
-            // Form1
+            // VentanaIDE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -132,7 +132,7 @@
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "VentanaIDE";
             this.Text = "IDE Proyecto1";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
