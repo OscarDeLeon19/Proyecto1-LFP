@@ -12,6 +12,7 @@ namespace Proyecto1_LabLFP
 {
     public partial class Form1 : Form
     {
+        string[] Reservadas = new string[] { "else", "if" };
         public Form1()
         {
             InitializeComponent();
@@ -75,28 +76,51 @@ namespace Proyecto1_LabLFP
 
         private void Area1_TextChanged(object sender, EventArgs e)
         {
-            int Caracteres = Area1.GetFirstCharIndexOfCurrentLine();
-            int linea = Area1.GetLineFromCharIndex(Caracteres);
-            etiqueta1.Text = "Numero de linea: " + linea;
-            try
-            {
-                string l = Area1.Lines[linea];
-                MessageBox.Show(l);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Hola");
-            }
-            
+
+            int position = Area1.SelectionStart;
+            int linea = Area1.GetLineFromCharIndex(position);
+            int Caracteres = position - Area1.GetFirstCharIndexOfCurrentLine();
+
+            etiqueta1.Text = "Fila: " + linea + " Columna " + Caracteres + " Posicion" + position;
+           
+
         }
 
         private void EventoClick(object sender, MouseEventArgs e)
         {
-            int Caracteres = Area1.GetFirstCharIndexOfCurrentLine();
-            int linea = Area1.GetLineFromCharIndex(Caracteres);
-            etiqueta1.Text = "Numero de linea: " + linea;
+            int position = Area1.SelectionStart;
+            int linea = Area1.GetLineFromCharIndex(position);
+            int Caracteres = position - Area1.GetFirstCharIndexOfCurrentLine();
+
+            etiqueta1.Text = "Fila: " + linea + " Columna " + Caracteres + " Posicion" + position;
+
         }
 
-       
+        private void PresionarEnter(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                int position = Area1.SelectionStart;
+                int linea = Area1.GetLineFromCharIndex(position);
+                string LineaDeTexto = Area1.Lines[linea];
+                char[] c = LineaDeTexto.ToCharArray();
+                for (int i = 0; i < c.Length; i++)
+                {
+                    if (Char.IsDigit(c[i]))
+                    {
+                        int pos = 0;
+                        for (int j = 0; j < linea; j++)
+                        {
+                            pos = pos + Area1.Lines[j].Length;
+                        }
+                        pos = pos + (linea + 1);
+                        pos = pos + (i - 1);
+                        Area1.Select(pos, 1);
+                        Area1.SelectionColor = Color.Red;
+                        Area1.SelectionStart = position;
+                    }
+                }
+            }
+        }
     }
 }
