@@ -12,7 +12,7 @@ namespace Proyecto1_LabLFP
 {
     public partial class VentanaIDE : Form
     {
-        string[] Reservadas = new string[] { "else", "if" };
+        Analizador analizador = new Analizador();
         public VentanaIDE()
         {
             InitializeComponent();
@@ -23,6 +23,7 @@ namespace Proyecto1_LabLFP
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Archivo nuevo");
+            Area1.Text = null;
             Area1.Enabled = true;
         }
 
@@ -93,7 +94,6 @@ namespace Proyecto1_LabLFP
             int Caracteres = position - Area1.GetFirstCharIndexOfCurrentLine();
 
             etiqueta1.Text = "Fila: " + linea + " Columna " + Caracteres + " Posicion" + position;
-
         }
 
         private void PresionarEnter(object sender, KeyEventArgs e)
@@ -102,38 +102,10 @@ namespace Proyecto1_LabLFP
             {
                 int position = Area1.SelectionStart;
                 int linea = Area1.GetLineFromCharIndex(position);
-                string LineaDeTexto = Area1.Lines[linea];
-                char[] c = LineaDeTexto.ToCharArray();
-                for (int i = 0; i < c.Length; i++)
-                {
-                    if (Char.IsDigit(c[i]))
-                    {
-                        int pos = 0;
-                        for (int j = 0; j < linea; j++)
-                        {
-                            pos = pos + Area1.Lines[j].Length;
-                        }
-                        pos = pos + (linea + 1);
-                        pos = pos + (i - 1);
-                        Area1.Select(pos, 1);
-                        Area1.SelectionColor = Color.Red;
-                        Area1.SelectionStart = position;
-                    }
-                    else
-                    {
-                        int pos = 0;
-                        for (int j = 0; j < linea; j++)
-                        {
-                            pos = pos + Area1.Lines[j].Length;
-                        }
-                        pos = pos + (linea + 1);
-                        pos = pos + (i - 1);
-                        Area1.Select(pos, 1);
-                        Area1.SelectionColor = Color.Blue;
-                        Area1.SelectionStart = position;
-                    }
-                }
+                string LineaDeTexto = Area1.Lines[linea];               
+                analizador.Analizar(Area1, LineaDeTexto, position, linea);              
             }
+            
         }
     }
 }
