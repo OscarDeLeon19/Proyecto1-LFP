@@ -21,12 +21,7 @@ namespace Proyecto1_LabLFP
 
         public void Analizar(RichTextBox Area, String LineaDeTexto, int Posicion, int NumLinea)
         {
-            if (LineaDeTexto.StartsWith("//"))
-            {
-                PintarPalabra(Posicion, 0, LineaDeTexto.Length, LineaDeTexto, Area, NumLinea);
-            }
-            else
-            {
+            
                 CantidadPalabras = 0;
                 LineaDeTexto = LineaDeTexto + " ";
                 char[] caracter = LineaDeTexto.ToCharArray();
@@ -54,20 +49,39 @@ namespace Proyecto1_LabLFP
                             }
                         }
                     }
+                    if (Char.IsNumber(caracter[i]))
+                    {
+                        string aux = "";
+                        bool No_Decimal = false;
+                        for (int j = i; j < caracter.Length; j++)
+                        {
+                            if (Char.IsNumber(caracter[j]))
+                            {
+                                aux = aux + caracter[j].ToString();
+                            }
+                            else if (Char.IsPunctuation(caracter[j]))
+                            {
+                                aux = aux + caracter[j].ToString();
+                                No_Decimal = true;
+                            }
+                            else if (Char.IsWhiteSpace(caracter[j]))
+                            {
+                                PintarNumero(Posicion, i, j - i, aux, Area, NumLinea, No_Decimal);
+                                i = j;
+                                j = caracter.Length;
+                                palabras[CantidadPalabras] = aux;
+                                CantidadPalabras++;
+                            }
+                        }
+                    }
+                
                 }
-            }
+            
         }
 
         public void PintarPalabra(int position, int inicio, int final, string palabra, RichTextBox Area, int linea)
         {
-            if (palabra.StartsWith("//"))
-            {
-                int pos = ObtenerPosicion(Area, linea, inicio);
-                Area.Select(pos, final);
-                Area.SelectionColor = Color.Red;
-                Area.SelectionStart = position;
-            }
-            else if (palabra == "entero")
+            if (palabra == "entero")
             {
                 int pos = ObtenerPosicion(Area, linea, inicio);
                 Area.Select(pos, final);
@@ -116,6 +130,20 @@ namespace Proyecto1_LabLFP
                 Area.SelectionColor = Color.Brown;
                 Area.SelectionStart = position;
             }
+            else if (palabra == "verdadero")
+            {
+                int pos = ObtenerPosicion(Area, linea, inicio);
+                Area.Select(pos, final);
+                Area.SelectionColor = Color.Orange;
+                Area.SelectionStart = position;
+            }
+            else if (palabra == "falso")
+            {
+                int pos = ObtenerPosicion(Area, linea, inicio);
+                Area.Select(pos, final);
+                Area.SelectionColor = Color.Orange;
+                Area.SelectionStart = position;
+            }
             else
             {
                 int pos = ObtenerPosicion(Area, linea, inicio);
@@ -125,6 +153,23 @@ namespace Proyecto1_LabLFP
             }
         }
 
+        public void PintarNumero(int position, int inicio, int final, string palabra, RichTextBox Area, int linea, bool Decimal)
+        {
+            if (Decimal == true)
+            {
+                int pos = ObtenerPosicion(Area, linea, inicio);
+                Area.Select(pos, final);
+                Area.SelectionColor = Color.Aquamarine;
+                Area.SelectionStart = position;
+            }
+            else
+            {
+                int pos = ObtenerPosicion(Area, linea, inicio);
+                Area.Select(pos, final);
+                Area.SelectionColor = Color.Magenta;
+                Area.SelectionStart = position;
+            }
+        }
         public int ObtenerPosicion(RichTextBox Area, int linea, int inicio)
         {
             int pos = 0;
@@ -136,5 +181,7 @@ namespace Proyecto1_LabLFP
             pos = pos + (inicio - 1);
             return pos;
         }
+
+
     }
 }
