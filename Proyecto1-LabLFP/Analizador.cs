@@ -102,6 +102,20 @@ namespace Proyecto1_LabLFP
                 Area.SelectionColor = Color.Brown;
                 Area.SelectionStart = position;
             }
+            else if (palabra == "SI" || palabra == "SINO" || palabra == "SINOSI" || palabra == "MIENTRAS" || palabra == "HACER" || palabra == "DESDE" || palabra == "HASTA" || palabra == "INCREMENTO" )
+            {
+                int pos = ObtenerPosicion(Area, linea, inicio);
+                Area.Select(pos, final);
+                Area.SelectionColor = Color.LightGreen;
+                Area.SelectionStart = position;
+            }
+            else if (palabra.Length == 1)
+            {
+                int pos = ObtenerPosicion(Area, linea, inicio);
+                Area.Select(pos, final);
+                Area.SelectionColor = Color.Brown;
+                Area.SelectionStart = position;
+            }
             else
             {
                 int pos = ObtenerPosicion(Area, linea, inicio);
