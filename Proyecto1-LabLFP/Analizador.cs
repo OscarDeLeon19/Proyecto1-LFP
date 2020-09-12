@@ -38,11 +38,11 @@ namespace Proyecto1_LabLFP
                             {
                                 aux = aux + caracter[j].ToString();
                             }
-                            else if (Char.IsWhiteSpace(caracter[j]))
+                            else if (Char.IsWhiteSpace(caracter[j]) || Char.IsSymbol(caracter[j]) || Char.IsPunctuation(caracter[j]))
                             {
-
+                                
                                 PintarPalabra(Posicion, i, j - i, aux, Area, NumLinea);
-                                i = j;
+                                i = j - 1;
                                 j = caracter.Length;
                                 palabras[CantidadPalabras] = aux;
                                 CantidadPalabras++;
@@ -52,21 +52,88 @@ namespace Proyecto1_LabLFP
                     if (Char.IsNumber(caracter[i]))
                     {
                         string aux = "";
+                    
                         bool No_Decimal = false;
                         for (int j = i; j < caracter.Length; j++)
                         {
+                        string caracter_numero = caracter[j].ToString();
                             if (Char.IsNumber(caracter[j]))
                             {
                                 aux = aux + caracter[j].ToString();
                             }
-                            else if (Char.IsPunctuation(caracter[j]))
+                            if (caracter_numero == ".")
                             {
                                 aux = aux + caracter[j].ToString();
                                 No_Decimal = true;
                             }
-                            else if (Char.IsWhiteSpace(caracter[j]))
+                            if (caracter_numero == ";")
                             {
                                 PintarNumero(Posicion, i, j - i, aux, Area, NumLinea, No_Decimal);
+                                i = j - 1;
+                                j = caracter.Length;
+                                palabras[CantidadPalabras] = aux;
+                                CantidadPalabras++;
+                            }
+                            else if (Char.IsWhiteSpace(caracter[j]) ||  Char.IsSymbol(caracter[j]) || Char.IsLetter(caracter[j]))
+                            {
+                                PintarNumero(Posicion, i, j - i, aux, Area, NumLinea, No_Decimal);
+                                i = j - 1;
+                                j = caracter.Length;
+                                palabras[CantidadPalabras] = aux;
+                                CantidadPalabras++;
+                            }
+                        }
+                    }
+                if (mini == "\"")
+                {
+                    string aux = "\"";
+                    for (int j = i + 1; j < caracter.Length; j++)
+                    {
+                        string comilla = caracter[j].ToString();
+                        if (Char.IsLetter(caracter[j]) || Char.IsNumber(caracter[j]) || Char.IsPunctuation(caracter[j]) || Char.IsSymbol(caracter[j]) || Char.IsWhiteSpace(caracter[j]))
+                        {
+                            aux = aux + caracter[j].ToString();
+
+                        }
+                        if (comilla == "\"")
+                        {
+
+                            aux = aux + caracter[j].ToString();
+                            j++;
+                            PintarPalabra(Posicion, i, j - i, aux, Area, NumLinea);
+                            i = j -1;
+                            j = caracter.Length;
+                            palabras[CantidadPalabras] = aux;
+                            CantidadPalabras++;
+                        }
+                    }
+                }
+                if (mini == "/")
+                {
+                    string comprobacion = caracter[i + 1].ToString();
+                    if (comprobacion == "/" )
+                    {
+                        string aux = "";
+                        for (int j = i; j < caracter.Length; j++)
+                        {
+                            aux = aux + caracter[j].ToString();
+                        }
+                        PintarPalabra(Posicion, i, caracter.Length - i, aux, Area, NumLinea);
+                        i = caracter.Length;
+                        palabras[CantidadPalabras] = aux;
+                        CantidadPalabras++;
+                    }
+                    if (comprobacion == "*")
+                    {
+                        string aux = "";
+                        for (int j = i; j < caracter.Length; j++)
+                        {
+                            
+                            aux = aux + caracter[j].ToString();
+                            if (aux.EndsWith("*/"))
+                            {
+                                j++;
+                                PintarPalabra(Posicion, i, j - i, aux, Area, NumLinea);
                                 i = j;
                                 j = caracter.Length;
                                 palabras[CantidadPalabras] = aux;
@@ -74,8 +141,28 @@ namespace Proyecto1_LabLFP
                             }
                         }
                     }
-                
                 }
+                if (mini == "+" || mini == "-" || mini == "/" || mini == "*" || mini == "<" || mini == ">" || mini == "!" || mini == "|" || mini == "&" || mini == "(" || mini == ")")
+                {
+                    PintarSigno(Posicion, i, 1, mini, Area, NumLinea, 1);
+                }
+                if(mini == ";")
+                {
+                    PintarSigno(Posicion, i, 1, mini, Area, NumLinea, 2);
+                }
+                if (mini == "=")
+                {
+                    if (i > 0) {
+                        string comprobacion = caracter[i - 1].ToString();
+                        if (comprobacion == "=" || comprobacion == "<" || comprobacion == ">" || comprobacion == "!" || )
+                        {
+
+                        }
+                    }
+                    PintarSigno(Posicion, i, 1, mini, Area, NumLinea, 2);
+                }
+
+            }
             
         }
 
@@ -116,7 +203,7 @@ namespace Proyecto1_LabLFP
                 Area.SelectionColor = Color.Brown;
                 Area.SelectionStart = position;
             }
-            else if (palabra == "SI" || palabra == "SINO" || palabra == "SINOSI" || palabra == "MIENTRAS" || palabra == "HACER" || palabra == "DESDE" || palabra == "HASTA" || palabra == "INCREMENTO" )
+            else if (palabra == "SI" || palabra == "SINO" || palabra == "MIENTRAS" || palabra == "HACER" || palabra == "DESDE" || palabra == "HASTA" || palabra == "INCREMENTO" )
             {
                 int pos = ObtenerPosicion(Area, linea, inicio);
                 Area.Select(pos, final);
@@ -144,6 +231,20 @@ namespace Proyecto1_LabLFP
                 Area.SelectionColor = Color.Orange;
                 Area.SelectionStart = position;
             }
+            else if (palabra.StartsWith("\""))
+            {
+                int pos = ObtenerPosicion(Area, linea, inicio);
+                Area.Select(pos, final);
+                Area.SelectionColor = Color.Gray;
+                Area.SelectionStart = position;
+            }
+            else if (palabra.StartsWith("//") || (palabra.StartsWith("/*") || palabra.EndsWith("*/")))
+            {
+                int pos = ObtenerPosicion(Area, linea, inicio);
+                Area.Select(pos, final);
+                Area.SelectionColor = Color.Red;
+                Area.SelectionStart = position;
+            }
             else
             {
                 int pos = ObtenerPosicion(Area, linea, inicio);
@@ -167,6 +268,24 @@ namespace Proyecto1_LabLFP
                 int pos = ObtenerPosicion(Area, linea, inicio);
                 Area.Select(pos, final);
                 Area.SelectionColor = Color.Magenta;
+                Area.SelectionStart = position;
+            }
+        }
+
+        public void PintarSigno(int position, int inicio, int final, string palabra, RichTextBox Area, int linea, int parametro)
+        {
+            if (parametro == 1)
+            {
+                int pos = ObtenerPosicion(Area, linea, inicio);
+                Area.Select(pos, final);
+                Area.SelectionColor = Color.Blue;
+                Area.SelectionStart = position;
+            }
+            if (parametro == 2)
+            {
+                int pos = ObtenerPosicion(Area, linea, inicio);
+                Area.Select(pos, final);
+                Area.SelectionColor = Color.Pink;
                 Area.SelectionStart = position;
             }
         }
