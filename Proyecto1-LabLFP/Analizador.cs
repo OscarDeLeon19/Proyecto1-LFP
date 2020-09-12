@@ -154,12 +154,15 @@ namespace Proyecto1_LabLFP
                 {
                     if (i > 0) {
                         string comprobacion = caracter[i - 1].ToString();
-                        if (comprobacion == "=" || comprobacion == "<" || comprobacion == ">" || comprobacion == "!" || )
+                        if (comprobacion == "=" || comprobacion == "<" || comprobacion == ">" || comprobacion == "!")
                         {
-
+                            PintarSigno(Posicion, i - 1, 2, comprobacion + mini , Area, NumLinea, 1);
+                        }
+                        else {
+                            PintarSigno(Posicion, i, 1, mini, Area, NumLinea, 2);
                         }
                     }
-                    PintarSigno(Posicion, i, 1, mini, Area, NumLinea, 2);
+                    
                 }
 
             }
