@@ -38,6 +38,7 @@
             this.OpenFile = new System.Windows.Forms.OpenFileDialog();
             this.SaveFile = new System.Windows.Forms.SaveFileDialog();
             this.etiqueta1 = new System.Windows.Forms.Label();
+            this.CajaErrores = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -123,11 +124,22 @@
             this.etiqueta1.TabIndex = 5;
             this.etiqueta1.Text = "Numero de Linea: ";
             // 
+            // CajaErrores
+            // 
+            this.CajaErrores.Enabled = false;
+            this.CajaErrores.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CajaErrores.Location = new System.Drawing.Point(12, 454);
+            this.CajaErrores.Name = "CajaErrores";
+            this.CajaErrores.Size = new System.Drawing.Size(865, 129);
+            this.CajaErrores.TabIndex = 7;
+            this.CajaErrores.Text = "";
+            // 
             // VentanaIDE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(889, 618);
+            this.Controls.Add(this.CajaErrores);
             this.Controls.Add(this.etiqueta1);
             this.Controls.Add(this.Area1);
             this.Controls.Add(this.menuStrip1);
@@ -154,6 +166,7 @@
         private System.Windows.Forms.OpenFileDialog OpenFile;
         private System.Windows.Forms.SaveFileDialog SaveFile;
         private System.Windows.Forms.Label etiqueta1;
+        private System.Windows.Forms.RichTextBox CajaErrores;
     }
 }
 

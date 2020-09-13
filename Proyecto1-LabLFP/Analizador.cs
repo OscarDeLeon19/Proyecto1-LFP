@@ -162,7 +162,10 @@ namespace Proyecto1_LabLFP
                             PintarSigno(Posicion, i, 1, mini, Area, NumLinea, 2);
                         }
                     }
-                    
+                }
+                if (mini == "_")
+                {
+                    PintarSigno(Posicion, i, 1, mini, Area, NumLinea, 3);
                 }
 
             }
@@ -254,6 +257,7 @@ namespace Proyecto1_LabLFP
                 Area.Select(pos, final);
                 Area.SelectionColor = Color.Black;
                 Area.SelectionStart = position;
+
             }
         }
 
@@ -290,7 +294,15 @@ namespace Proyecto1_LabLFP
                 Area.Select(pos, final);
                 Area.SelectionColor = Color.Pink;
                 Area.SelectionStart = position;
+            } 
+            if (parametro == 3)
+            {
+                int pos = ObtenerPosicion(Area, linea, inicio);
+                Area.Select(pos, final);
+                Area.SelectionColor = Color.LightGreen;
+                Area.SelectionStart = position;
             }
+
         }
         public int ObtenerPosicion(RichTextBox Area, int linea, int inicio)
         {
