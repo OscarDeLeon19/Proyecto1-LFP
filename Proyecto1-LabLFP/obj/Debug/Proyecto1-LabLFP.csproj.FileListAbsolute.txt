@@ -2,9 +2,9 @@ C:\Users\Oscar de León\Desktop\Git\Proyecto1 LFP\Proyecto1-LFP\Proyecto1-LabLFP
 C:\Users\Oscar de León\Desktop\Git\Proyecto1 LFP\Proyecto1-LFP\Proyecto1-LabLFP\bin\Debug\Proyecto1-LabLFP.exe
 C:\Users\Oscar de León\Desktop\Git\Proyecto1 LFP\Proyecto1-LFP\Proyecto1-LabLFP\bin\Debug\Proyecto1-LabLFP.pdb
 C:\Users\Oscar de León\Desktop\Git\Proyecto1 LFP\Proyecto1-LFP\Proyecto1-LabLFP\obj\Debug\Proyecto1-LabLFP.csprojAssemblyReference.cache
+C:\Users\Oscar de León\Desktop\Git\Proyecto1 LFP\Proyecto1-LFP\Proyecto1-LabLFP\obj\Debug\Proyecto1_LabLFP.VentanaIDE.resources
 C:\Users\Oscar de León\Desktop\Git\Proyecto1 LFP\Proyecto1-LFP\Proyecto1-LabLFP\obj\Debug\Proyecto1_LabLFP.Properties.Resources.resources
 C:\Users\Oscar de León\Desktop\Git\Proyecto1 LFP\Proyecto1-LFP\Proyecto1-LabLFP\obj\Debug\Proyecto1-LabLFP.csproj.GenerateResource.cache
 C:\Users\Oscar de León\Desktop\Git\Proyecto1 LFP\Proyecto1-LFP\Proyecto1-LabLFP\obj\Debug\Proyecto1-LabLFP.csproj.CoreCompileInputs.cache
 C:\Users\Oscar de León\Desktop\Git\Proyecto1 LFP\Proyecto1-LFP\Proyecto1-LabLFP\obj\Debug\Proyecto1-LabLFP.exe
 C:\Users\Oscar de León\Desktop\Git\Proyecto1 LFP\Proyecto1-LFP\Proyecto1-LabLFP\obj\Debug\Proyecto1-LabLFP.pdb
-C:\Users\Oscar de León\Desktop\Git\Proyecto1 LFP\Proyecto1-LFP\Proyecto1-LabLFP\obj\Debug\Proyecto1_LabLFP.VentanaIDE.resources

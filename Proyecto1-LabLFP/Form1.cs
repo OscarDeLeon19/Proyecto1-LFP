@@ -16,6 +16,7 @@ namespace Proyecto1_LabLFP
         public VentanaIDE()
         {
             InitializeComponent();
+            
         }
 
         
@@ -25,6 +26,8 @@ namespace Proyecto1_LabLFP
             MessageBox.Show("Archivo nuevo");
             Area1.Text = null;
             Area1.Enabled = true;
+            richTextBox1.Enabled = true;
+
         }
 
         
@@ -103,7 +106,7 @@ namespace Proyecto1_LabLFP
                 int position = Area1.SelectionStart;
                 int linea = Area1.GetLineFromCharIndex(position);
                 string LineaDeTexto = Area1.Lines[linea];               
-                analizador.Analizar(Area1, LineaDeTexto, position, linea);              
+                analizador.Analizar(Area1, LineaDeTexto, position, linea, richTextBox1);              
             }
             
         }
