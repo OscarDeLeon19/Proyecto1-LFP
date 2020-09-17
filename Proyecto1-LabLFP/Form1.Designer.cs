@@ -139,6 +139,7 @@
             this.Area1.Text = "";
             this.Area1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.EventoClick);
             this.Area1.TextChanged += new System.EventHandler(this.Area1_TextChanged);
+            this.Area1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PresionarFlecha);
             // 
             // OpenFile
             // 

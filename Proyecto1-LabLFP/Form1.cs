@@ -145,5 +145,17 @@ namespace Proyecto1_LabLFP
                 MessageBox.Show("No se guardaron los errores");
             }
         }
+
+        private void PresionarFlecha(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Up || e.KeyData == Keys.Down || e.KeyData == Keys.Left || e.KeyData == Keys.Right)
+            {
+                int position = Area1.SelectionStart;
+                int linea = Area1.GetLineFromCharIndex(position);
+                int Caracteres = position - Area1.GetFirstCharIndexOfCurrentLine();
+
+                etiqueta1.Text = "Fila: " + linea + " Columna " + Caracteres;
+            }
+        }
     }
 }
