@@ -129,5 +129,21 @@ namespace Proyecto1_LabLFP
             }
             MessageBox.Show("Programa Compilado");
         }
+
+        private void exportarErroresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.Text != null)
+            {
+                if (SaveErrores.ShowDialog() == DialogResult.OK)
+                {
+                    richTextBox1.SaveFile(SaveErrores.FileName, RichTextBoxStreamType.PlainText);
+                    MessageBox.Show("Errores guardados");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se guardaron los errores");
+            }
+        }
     }
 }

@@ -44,6 +44,7 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.BotonCompilar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.SaveErrores = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -125,6 +126,7 @@
             | System.Windows.Forms.Keys.E)));
             this.exportarErroresToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.exportarErroresToolStripMenuItem.Text = "Exportar Errores";
+            this.exportarErroresToolStripMenuItem.Click += new System.EventHandler(this.exportarErroresToolStripMenuItem_Click);
             // 
             // Area1
             // 
@@ -169,7 +171,7 @@
             // BotonCompilar
             // 
             this.BotonCompilar.Enabled = false;
-            this.BotonCompilar.Location = new System.Drawing.Point(706, 425);
+            this.BotonCompilar.Location = new System.Drawing.Point(679, 428);
             this.BotonCompilar.Name = "BotonCompilar";
             this.BotonCompilar.Size = new System.Drawing.Size(171, 22);
             this.BotonCompilar.TabIndex = 11;
@@ -185,6 +187,10 @@
             this.label1.Size = new System.Drawing.Size(126, 13);
             this.label1.TabIndex = 13;
             this.label1.Text = "Cuadro de errores lexicos";
+            // 
+            // SaveErrores
+            // 
+            this.SaveErrores.Filter = "Archivo de Errores (*.gtE)|* .gtE";
             // 
             // VentanaIDE
             // 
@@ -226,6 +232,7 @@
         private System.Windows.Forms.ToolStripMenuItem exportarErroresToolStripMenuItem;
         private System.Windows.Forms.Button BotonCompilar;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.SaveFileDialog SaveErrores;
     }
 }
 
