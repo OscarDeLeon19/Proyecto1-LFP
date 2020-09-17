@@ -27,7 +27,8 @@ namespace Proyecto1_LabLFP
             Area1.Text = null;
             Area1.Enabled = true;
             richTextBox1.Enabled = true;
-
+            BotonCompilar.Enabled = true;
+            richTextBox1.Text = null;
         }
 
         
@@ -41,13 +42,16 @@ namespace Proyecto1_LabLFP
                 {
                     if (SaveFile.ShowDialog() == DialogResult.OK)
                     {
-
+                        richTextBox1.Text = null;
+                        BotonCompilar.Enabled = false;
                         Area1.SaveFile(SaveFile.FileName, RichTextBoxStreamType.PlainText);
                         MessageBox.Show("Archivo Guardado");
                     }
                 }
                 Area1.Text = null;
                 Area1.Enabled = false;
+                richTextBox1.Text = null;
+                richTextBox1.Enabled = false;
             } 
         }
 
@@ -57,6 +61,8 @@ namespace Proyecto1_LabLFP
             if (OpenFile.ShowDialog() == DialogResult.OK)
             {
                 Area1.LoadFile(OpenFile.FileName, RichTextBoxStreamType.PlainText);
+                richTextBox1.Text = null;
+                BotonCompilar.Enabled = true;
                 MessageBox.Show("Archivo Cargado");
             }
         }
@@ -66,8 +72,7 @@ namespace Proyecto1_LabLFP
             if (Area1.Enabled == true)
             {
                 if (SaveFile.ShowDialog() == DialogResult.OK)
-                {
-                    
+                {                    
                     Area1.SaveFile(SaveFile.FileName, RichTextBoxStreamType.PlainText);
                     MessageBox.Show("Archivo Guardado");
                 }
@@ -85,7 +90,7 @@ namespace Proyecto1_LabLFP
             int linea = Area1.GetLineFromCharIndex(position);
             int Caracteres = position - Area1.GetFirstCharIndexOfCurrentLine();
 
-            etiqueta1.Text = "Fila: " + linea + " Columna " + Caracteres + " Posicion" + position;
+            etiqueta1.Text = "Fila: " + linea + " Columna " + Caracteres;
            
 
         }
@@ -96,19 +101,33 @@ namespace Proyecto1_LabLFP
             int linea = Area1.GetLineFromCharIndex(position);
             int Caracteres = position - Area1.GetFirstCharIndexOfCurrentLine();
 
-            etiqueta1.Text = "Fila: " + linea + " Columna " + Caracteres + " Posicion" + position;
+            etiqueta1.Text = "Fila: " + linea + " Columna " + Caracteres;
         }
 
-        private void PresionarEnter(object sender, KeyEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Up || e.KeyData == Keys.Down)
+            richTextBox1.Text = null;
+            int lineas = Area1.Lines.Length;
+            for (int i = 0; i < lineas; i++)
             {
                 int position = Area1.SelectionStart;
-                int linea = Area1.GetLineFromCharIndex(position);
-                string LineaDeTexto = Area1.Lines[linea];               
-                analizador.Analizar(Area1, LineaDeTexto, position, linea, richTextBox1);              
+                string LineaDeTexto = Area1.Lines[i];
+                analizador.Analizar(Area1, LineaDeTexto, position, i, richTextBox1);
             }
-            
+            MessageBox.Show("Programa Compilado");
+        }
+
+        private void compilarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = null;
+            int lineas = Area1.Lines.Length;
+            for (int i = 0; i < lineas; i++)
+            {
+                int position = Area1.SelectionStart;
+                string LineaDeTexto = Area1.Lines[i];
+                analizador.Analizar(Area1, LineaDeTexto, position, i, richTextBox1);
+            }
+            MessageBox.Show("Programa Compilado");
         }
     }
 }

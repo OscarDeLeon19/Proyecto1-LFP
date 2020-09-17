@@ -34,18 +34,24 @@
             this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.proyectoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compilarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportarErroresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Area1 = new System.Windows.Forms.RichTextBox();
             this.OpenFile = new System.Windows.Forms.OpenFileDialog();
             this.SaveFile = new System.Windows.Forms.SaveFileDialog();
             this.etiqueta1 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.BotonCompilar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.archivoToolStripMenuItem});
+            this.archivoToolStripMenuItem,
+            this.proyectoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(889, 24);
@@ -94,6 +100,32 @@
             this.cerrarToolStripMenuItem.Text = "Cerrar";
             this.cerrarToolStripMenuItem.Click += new System.EventHandler(this.cerrarToolStripMenuItem_Click_1);
             // 
+            // proyectoToolStripMenuItem
+            // 
+            this.proyectoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.compilarToolStripMenuItem,
+            this.exportarErroresToolStripMenuItem});
+            this.proyectoToolStripMenuItem.Name = "proyectoToolStripMenuItem";
+            this.proyectoToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.proyectoToolStripMenuItem.Text = "Proyecto";
+            // 
+            // compilarToolStripMenuItem
+            // 
+            this.compilarToolStripMenuItem.Name = "compilarToolStripMenuItem";
+            this.compilarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.C)));
+            this.compilarToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.compilarToolStripMenuItem.Text = "Compilar";
+            this.compilarToolStripMenuItem.Click += new System.EventHandler(this.compilarToolStripMenuItem_Click);
+            // 
+            // exportarErroresToolStripMenuItem
+            // 
+            this.exportarErroresToolStripMenuItem.Name = "exportarErroresToolStripMenuItem";
+            this.exportarErroresToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.E)));
+            this.exportarErroresToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.exportarErroresToolStripMenuItem.Text = "Exportar Errores";
+            // 
             // Area1
             // 
             this.Area1.Enabled = false;
@@ -105,15 +137,14 @@
             this.Area1.Text = "";
             this.Area1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.EventoClick);
             this.Area1.TextChanged += new System.EventHandler(this.Area1_TextChanged);
-            this.Area1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PresionarEnter);
             // 
             // OpenFile
             // 
-            this.OpenFile.Filter = "Archivo de Texto (*.txt)|* .txt";
+            this.OpenFile.Filter = "Archivo de Proyecto (*.gt)|* .gt";
             // 
             // SaveFile
             // 
-            this.SaveFile.Filter = "Archivo de Texto (*.txt)|*.txt";
+            this.SaveFile.Filter = "Archivo de Proyecto (*.gt)|* .gt";
             // 
             // etiqueta1
             // 
@@ -128,18 +159,40 @@
             // 
             this.richTextBox1.Enabled = false;
             this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(12, 453);
+            this.richTextBox1.Location = new System.Drawing.Point(12, 474);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(865, 124);
+            this.richTextBox1.Size = new System.Drawing.Size(865, 123);
             this.richTextBox1.TabIndex = 9;
             this.richTextBox1.Text = "";
+            // 
+            // BotonCompilar
+            // 
+            this.BotonCompilar.Enabled = false;
+            this.BotonCompilar.Location = new System.Drawing.Point(706, 425);
+            this.BotonCompilar.Name = "BotonCompilar";
+            this.BotonCompilar.Size = new System.Drawing.Size(171, 22);
+            this.BotonCompilar.TabIndex = 11;
+            this.BotonCompilar.Text = "Compilar";
+            this.BotonCompilar.UseVisualStyleBackColor = true;
+            this.BotonCompilar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 458);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(126, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Cuadro de errores lexicos";
             // 
             // VentanaIDE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(889, 618);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.BotonCompilar);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.etiqueta1);
             this.Controls.Add(this.Area1);
@@ -168,6 +221,11 @@
         private System.Windows.Forms.SaveFileDialog SaveFile;
         private System.Windows.Forms.Label etiqueta1;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.ToolStripMenuItem proyectoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem compilarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportarErroresToolStripMenuItem;
+        private System.Windows.Forms.Button BotonCompilar;
+        private System.Windows.Forms.Label label1;
     }
 }
 

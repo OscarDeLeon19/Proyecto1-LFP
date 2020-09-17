@@ -242,7 +242,7 @@ namespace Proyecto1_LabLFP
                 Area.Select(pos, final);
                 Area.SelectionColor = Color.Black;
                 Area.SelectionStart = position;
-                CajaError.Text = CajaError.Text + " " + palabra;
+                CajaError.Text = CajaError.Text + " [" + palabra + "]";
 
 
             }
@@ -324,7 +324,7 @@ namespace Proyecto1_LabLFP
                 Area.Select(pos, final);
                 Area.SelectionColor = Color.Black;
                 Area.SelectionStart = position;
-                CajaError.Text = CajaError.Text + " " + palabra;
+                CajaError.Text = CajaError.Text + " [" + palabra + "]";
             }
 
 
