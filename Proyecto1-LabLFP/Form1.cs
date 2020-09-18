@@ -43,7 +43,6 @@ namespace Proyecto1_LabLFP
                     if (SaveFile.ShowDialog() == DialogResult.OK)
                     {
                         richTextBox1.Text = null;
-                        BotonCompilar.Enabled = false;
                         Area1.SaveFile(SaveFile.FileName, RichTextBoxStreamType.PlainText);
                         MessageBox.Show("Archivo Guardado");
                     }
@@ -52,6 +51,7 @@ namespace Proyecto1_LabLFP
                 Area1.Enabled = false;
                 richTextBox1.Text = null;
                 richTextBox1.Enabled = false;
+                BotonCompilar.Enabled = false;
             } 
         }
 
@@ -106,28 +106,34 @@ namespace Proyecto1_LabLFP
 
         private void button1_Click(object sender, EventArgs e)
         {
-            richTextBox1.Text = null;
-            int lineas = Area1.Lines.Length;
-            for (int i = 0; i < lineas; i++)
+            if (Area1.Text != null)
             {
-                int position = Area1.SelectionStart;
-                string LineaDeTexto = Area1.Lines[i];
-                analizador.Analizar(Area1, LineaDeTexto, position, i, richTextBox1);
+                richTextBox1.Text = null;
+                int lineas = Area1.Lines.Length;
+                for (int i = 0; i < lineas; i++)
+                {
+                    int position = Area1.SelectionStart;
+                    string LineaDeTexto = Area1.Lines[i];
+                    analizador.Analizar(Area1, LineaDeTexto, position, i, richTextBox1);
+                }
+                MessageBox.Show("Programa Compilado");
             }
-            MessageBox.Show("Programa Compilado");
         }
 
         private void compilarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.Text = null;
-            int lineas = Area1.Lines.Length;
-            for (int i = 0; i < lineas; i++)
+            if (Area1.Text != null)
             {
-                int position = Area1.SelectionStart;
-                string LineaDeTexto = Area1.Lines[i];
-                analizador.Analizar(Area1, LineaDeTexto, position, i, richTextBox1);
+                richTextBox1.Text = null;
+                int lineas = Area1.Lines.Length;
+                for (int i = 0; i < lineas; i++)
+                {
+                    int position = Area1.SelectionStart;
+                    string LineaDeTexto = Area1.Lines[i];
+                    analizador.Analizar(Area1, LineaDeTexto, position, i, richTextBox1);
+                }
+                MessageBox.Show("Programa Compilado");
             }
-            MessageBox.Show("Programa Compilado");
         }
 
         private void exportarErroresToolStripMenuItem_Click(object sender, EventArgs e)
