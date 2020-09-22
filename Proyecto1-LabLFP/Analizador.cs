@@ -13,15 +13,13 @@ namespace Proyecto1_LabLFP
     {
         private string[] palabras = new string[100];
         private int CantidadPalabras;
-        private int[] espacios = new int[100];
         public Analizador()
         {
             
         }
 
         public void Analizar(RichTextBox Area, String LineaDeTexto, int Posicion, int NumLinea, RichTextBox CajaError)
-        {
-            
+        {            
                 CantidadPalabras = 0;
                 LineaDeTexto = LineaDeTexto + " ";
                 char[] caracter = LineaDeTexto.ToCharArray();
@@ -150,11 +148,7 @@ namespace Proyecto1_LabLFP
                         }
                     }
                 }
-                
-                
-
-            }
-            
+                }
         }
 
         public void PintarPalabra(int position, int inicio, int final, string palabra, RichTextBox Area, int linea, RichTextBox CajaError)

@@ -12,15 +12,13 @@ namespace Proyecto1_LabLFP
 {
     public partial class VentanaIDE : Form
     {
-        Analizador analizador = new Analizador();
+        private Analizador analizador = new Analizador();
         public VentanaIDE()
         {
             InitializeComponent();
             
         }
-
         
-
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Archivo nuevo");
